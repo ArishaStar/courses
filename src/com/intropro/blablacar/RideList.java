@@ -12,7 +12,9 @@ public class RideList {
 	
 	public Ride createRide(String start, String finish, Date date, Profile owner){
 		Ride ride = Ride.createRide(start, finish, date, owner);
-		if (rides.contains(ride)) return null;
+		if (rides.contains(ride)) {
+			throw new RideAlreadyExistsException();// return null;
+		}
 		rides.add(ride);
 		return ride;
 	}
