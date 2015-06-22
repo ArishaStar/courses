@@ -6,14 +6,21 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class RideList {
  
 	private List<Ride> rides = new ArrayList<Ride>();
+	private static final Logger log = Logger.getLogger(RideList.class);
+
 	
 	public Ride createRide(String start, String finish, Date date, Profile owner) throws RideAlreadyExistsException{
 		Ride ride = Ride.createRide(start, finish, date, owner);
 		if (rides.contains(ride)) {
-			throw new RideAlreadyExistsException();// return null;
+			log.info("error");
+			Throwable t;
+			log.info(message, t);
+			throw new RideAlreadyExistsException("error");// return null;
 		}
 		rides.add(ride);
 		return ride;
