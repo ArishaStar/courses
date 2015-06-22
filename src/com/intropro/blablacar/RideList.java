@@ -10,7 +10,7 @@ public class RideList {
  
 	private List<Ride> rides = new ArrayList<Ride>();
 	
-	public Ride createRide(String start, String finish, Date date, Profile owner){
+	public Ride createRide(String start, String finish, Date date, Profile owner) throws RideAlreadyExistsException{
 		Ride ride = Ride.createRide(start, finish, date, owner);
 		if (rides.contains(ride)) {
 			throw new RideAlreadyExistsException();// return null;

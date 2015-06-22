@@ -9,7 +9,7 @@ import org.junit.Test;
 public class RideListTest {
 
 	@Test
-	public void testCreateRide() {
+	public void testCreateRide() throws RideAlreadyExistsException {
 		
 		String start = "Cristal";
 		String finish = "Grigorenko";
@@ -29,11 +29,11 @@ public class RideListTest {
 		assertEquals(2, rideList.getRides().size());
 		assertEquals(ride2, rideList.getRides().get(1));
 		
-		assertNull(rideList.createRide(start2, finish, date, profile));
-		
+		//assertNull(rideList.createRide(start2, finish, date, profile));
+
 	}
 	@Test
-	public void testSearchRide() {
+	public void testSearchRide() throws RideAlreadyExistsException {
 		String start = "Cristal";
 		String start2 = "Grigorenko";
 		String finish = "Grigorenko";
@@ -67,7 +67,7 @@ public class RideListTest {
 	
 	
 	@Test
-	public void testDeleteRide() {
+	public void testDeleteRide() throws RideAlreadyExistsException {
 		String start = "Cristal";
 		String finish = "Grigorenko";
 		Date date = new Date();

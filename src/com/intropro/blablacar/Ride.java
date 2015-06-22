@@ -29,9 +29,11 @@ public class Ride {
 		return ride;  
 	}
 	
-	public Request createRequest(Profile owner){
+	public Request createRequest(Profile owner) throws RequestAlreadyExistsException{
 		Request request = Request.createRequest(owner);
-		if (requests.contains(request)) return null;
+		if (requests.contains(request)) {
+			throw new RequestAlreadyExistsException();//return null;
+		}
 		requests.add(request);
 		return request;
 	}
@@ -45,9 +47,11 @@ public class Ride {
 		requests.remove(request);
 	}
 	
-	public Comment createComment(Profile owner, String body) {
+	public Comment createComment(Profile owner, String body) throws CommentAlreadyExistsException {
 		Comment comment = Comment.createComment(owner, body);
-		if (comments.contains(comment)) return null;
+		if (comments.contains(comment)) {
+			throw new CommentAlreadyExistsException();//return null;
+		}
 		comments.add(comment);
 		return comment;
 	}

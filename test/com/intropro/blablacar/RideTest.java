@@ -10,7 +10,7 @@ public class RideTest {
 
 	
 	@Test
-	public void testCreateRequest() {
+	public void testCreateRequest() throws RideAlreadyExistsException, RequestAlreadyExistsException {
 		String start = "Cristal";
 		String finish = "Grigorenko";
 		Date date = new Date();
@@ -44,7 +44,7 @@ public class RideTest {
 	}
 	
 	@Test
-	public void testDeleteRequest() {
+	public void testDeleteRequest() throws RideAlreadyExistsException, RequestAlreadyExistsException {
 		String start = "Cristal";
 		String finish = "Grigorenko";
 		Date date = new Date();
@@ -65,7 +65,7 @@ public class RideTest {
 	}
 	
 	@Test
-	public void testChangeStatusRequest() {
+	public void testChangeStatusRequest() throws RideAlreadyExistsException, RequestAlreadyExistsException {
 		String start = "Cristal";
 		String finish = "Grigorenko";
 		Date date = new Date();
@@ -90,7 +90,7 @@ public class RideTest {
 	}
 	
 	@Test
-	public void testCreateComment() {
+	public void testCreateComment() throws RideAlreadyExistsException, CommentAlreadyExistsException {
 		String start = "Cristal";
 		String finish = "Grigorenko";
 		Date date = new Date();
