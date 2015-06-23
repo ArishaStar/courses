@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class Ride {
 	
 	private String start;
@@ -13,6 +15,8 @@ public class Ride {
 	private Profile owner;
 	private List <Comment> comments = new ArrayList<Comment>();
 	private List <Request> requests = new ArrayList<Request>();
+	
+	private static final Logger log = Logger.getLogger(Ride.class);
 	
 	private Ride() {
 		
@@ -32,7 +36,8 @@ public class Ride {
 	public Request createRequest(Profile owner) throws RequestAlreadyExistsException{
 		Request request = Request.createRequest(owner);
 		if (requests.contains(request)) {
-			throw new RequestAlreadyExistsException();//return null;
+			log.info("Failed to create request");
+			throw new RequestAlreadyExistsException("Failed to create request");//return null;
 		}
 		requests.add(request);
 		return request;
@@ -50,7 +55,8 @@ public class Ride {
 	public Comment createComment(Profile owner, String body) throws CommentAlreadyExistsException {
 		Comment comment = Comment.createComment(owner, body);
 		if (comments.contains(comment)) {
-			throw new CommentAlreadyExistsException();//return null;
+			log.info("Failed to create comment");
+			throw new CommentAlreadyExistsException("Failed to create comment");//return null;
 		}
 		comments.add(comment);
 		return comment;

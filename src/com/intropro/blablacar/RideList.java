@@ -17,10 +17,8 @@ public class RideList {
 	public Ride createRide(String start, String finish, Date date, Profile owner) throws RideAlreadyExistsException{
 		Ride ride = Ride.createRide(start, finish, date, owner);
 		if (rides.contains(ride)) {
-			log.info("error");
-			Throwable t;
-			log.info(message, t);
-			throw new RideAlreadyExistsException("error");// return null;
+			log.info("Failed to create new ride: Ride already exist");
+			throw new RideAlreadyExistsException("Failed to create new ride: Ride already exist");// return null;
 		}
 		rides.add(ride);
 		return ride;
